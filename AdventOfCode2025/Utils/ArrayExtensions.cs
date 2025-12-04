@@ -80,6 +80,16 @@ public static class ArrayExtensions
 		return array;
 	}
 
+	public static T[,] SetItems<T>(this T[,] array, IEnumerable<Point> points, T value)
+	{
+		foreach (var point in points)
+		{
+			array[point.X, point.Y] = value;
+		}
+
+		return array;
+	}
+
 	public static R[,] Select<T, R>(this T[,] items, Func<T, R> f)
 	{
 		int d0 = items.GetLength(0);
