@@ -52,4 +52,15 @@ public static class EnumerableExtensions
 			Console.WriteLine(item);
 		}
 	}
+
+	public static long Multiply(this IEnumerable<int> items)
+	{
+		long result = 1;
+		foreach (var item in items)
+		{
+			result *= item;
+		}
+
+		return result;
+	}
 }
