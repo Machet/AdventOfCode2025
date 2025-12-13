@@ -51,7 +51,7 @@ public class StateSearch
 		return bestStates.Where(s => s.Length == lowest).ToList();
 	}
 
-	public static S? FindBestPath<S, SK>(S initialState) where S : class, SearchState<SK> where SK : class 
+	public static S? FindBestPath<S, SK>(S initialState) where S : class, SearchState<SK>  
 	{
 		var queue = new PriorityQueue<S, int>();
 		queue.Enqueue(initialState, 0);

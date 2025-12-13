@@ -45,6 +45,27 @@ public static class EnumerableExtensions
 		}
 	}
 
+	public static TOut[,] To2DArray<TIn, TOut>(this List<List<TIn>> source)
+	{
+		var rowCount = source.Count;
+		var colCount = source[0].Count;
+		var result = new TOut[rowCount, colCount];
+		for (int i = 0; i < rowCount; i++)
+		{
+			if (source[i].Count() != colCount)
+			{
+				throw new ArgumentException("All rows must have the same number of columns.");
+			}
+
+			for (int j = 0; j < colCount; j++)
+			{
+				result[i, j] = (TOut)(dynamic)source[i][j]!;
+			}
+		}
+
+		return result;
+	}
+
 	public static void Print<T>(this IEnumerable<T> items)
 	{
 		foreach (var item in items)
